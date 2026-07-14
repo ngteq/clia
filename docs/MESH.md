@@ -1,13 +1,13 @@
 # Mesh
 
-The mesh connects **secondary** `claid` instances to a **main hub** over TCP. All project, AI, and rsync operations run on the main host; secondaries exchange line-framed commands and text replies.
+The mesh connects **secondary** `cliad` instances to a **main hub** over TCP. All project, AI, and rsync operations run on the main host; secondaries exchange line-framed commands and text replies.
 
 ## Topology
 
 ```
                     ┌─────────────────────────────┐
                     │ Main host (agent)           │
-                    │  claid  [main] role=hub    │
+                    │  cliad  [main] role=hub    │
                     │  listen 0.0.0.0:4224        │
                     │  plugins + Cursor agent     │
                     └──────────────┬──────────────┘
@@ -34,7 +34,7 @@ The mesh connects **secondary** `claid` instances to a **main hub** over TCP. Al
 role = hub
 bind_host = 0.0.0.0
 port = 4224
-client_id = claid-main
+client_id = cliad-main
 platform = linux
 max_clients = 32
 auth_token =
@@ -43,13 +43,13 @@ auth_token =
 Start:
 
 ```bash
-./scripts/start-claid-daemon.sh
+./scripts/start-cliad-daemon.sh
 ```
 
 Verify:
 
 ```bash
-./scripts/status-claid-main.sh
+./scripts/status-cliad-main.sh
 ```
 
 ## Secondary configuration
@@ -58,7 +58,7 @@ Verify:
 [secondary]
 host = 192.168.1.100
 port = 4224
-client_id = claid-linux
+client_id = cliad-linux
 platform = linux
 auth_token =
 ```
@@ -66,8 +66,8 @@ auth_token =
 Connect:
 
 ```bash
-claid -c secondary.ini
-claid -c secondary.ini 192.168.1.100 4224 claid-linux
+cliad -c secondary.ini
+cliad -c secondary.ini 192.168.1.100 4224 cliad-linux
 ```
 
 Platform templates: `local/examples/secondary.*.ini.example`.

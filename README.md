@@ -1,6 +1,6 @@
 # clia v0.3.5
 
-**clia** is a terminal mesh client that connects secondary machines to a main agent host. The compiled binary is **`claid`**.
+**clia** is a terminal mesh client that connects secondary machines to a main agent host. The compiled binary is **`cliad`**.
 
 Repository: [https://github.com/ngteq/clia](https://github.com/ngteq/clia)
 
@@ -10,7 +10,7 @@ Repository: [https://github.com/ngteq/clia](https://github.com/ngteq/clia)
 - **Cursor agent relay** — AI chat from remote terminals via the main host
 - **Built-in plugins** — OpenRouter, OpenAI-compatible API, rsync search
 - **Slash-command chat UI** — `/ai`, `/ct`, `/project`, `/menu`, and short aliases
-- **AmigaOS port** — secondary client for retro setups
+- **AmigaOS port** — secondary client
 
 ## Quick start
 
@@ -20,26 +20,26 @@ cd clia
 ./build.sh
 ```
 
-Binary: `build/bin/claid`
+Binary: `build/bin/cliad`
 
 Copy and edit the example INI:
 
 ```bash
 mkdir -p ~/.config/clia
-cp clai-terminal.main.ini.example ~/.config/clia/main.ini
+cp clia-terminal.main.ini.example ~/.config/clia/main.ini
 # edit workspace= and rsync_config= paths
 ```
 
 Start the main daemon (mesh + optional rsync companion):
 
 ```bash
-CLIA_MAIN_INI=~/.config/clia/main.ini ./scripts/start-claid-daemon.sh
+CLIA_MAIN_INI=~/.config/clia/main.ini ./scripts/start-cliad-daemon.sh
 ```
 
 Connect a secondary client:
 
 ```bash
-./build/bin/claid -c clai-terminal.secondary.ini.example 192.168.1.100 4224
+./build/bin/cliad -c clia-terminal.secondary.ini.example 192.168.1.100 4224
 ```
 
 ## Configuration
@@ -51,7 +51,7 @@ Connect a secondary client:
 | `$CLIA_WORKSPACE_ROOT` | Main workspace for `/main` |
 | `$CLIA_CODE_ROOT` | Code root for project discovery |
 | `$CLIA_PROJECTS_DIR` | Projects pool dir name (default: `projects`) |
-| `$CLAI_RSYNC_CONFIG` | Override rsync config path |
+| `$CLIA_RSYNC_CONFIG` | Override rsync config path |
 
 See [docs/INSTALL.md](docs/INSTALL.md) for platform builds and [examples/README.md](examples/README.md) for INI templates.
 

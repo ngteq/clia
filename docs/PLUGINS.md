@@ -1,6 +1,6 @@
 # Plugins
 
-**claid** loads plugins from a fixed compile-time table. Enable each plugin in `[plugins]` and configure its dedicated INI section on the **main agent host**.
+**cliad** loads plugins from a fixed compile-time table. Enable each plugin in `[plugins]` and configure its dedicated INI section on the **main agent host**.
 
 Secondaries never run plugins locally — they request AI and project actions through the mesh hub.
 
@@ -89,10 +89,10 @@ rsync_config = examples/rsyncd.conf.example
 Install a local config:
 
 ```bash
-./scripts/install-clai-rsync-conf.sh
+./scripts/install-clia-rsync-conf.sh
 ```
 
-Override path with `$CLAI_RSYNC_CONFIG`. Example modules: [../examples/rsyncd.conf.example](../examples/rsyncd.conf.example).
+Override path with `$CLIA_RSYNC_CONFIG`. Example modules: [../examples/rsyncd.conf.example](../examples/rsyncd.conf.example).
 
 ## proxy
 
@@ -119,4 +119,4 @@ Amiga clients use mesh relay only. AI provider list and execution happen on the 
 | Topic | Doc |
 |-------|-----|
 | Chat workflow | [CHAT.md](CHAT.md) |
-| Main INI example | [../clai-terminal.main.ini.example](../clai-terminal.main.ini.example) |
+| Main INI example | [../clia-terminal.main.ini.example](../clia-terminal.main.ini.example) |

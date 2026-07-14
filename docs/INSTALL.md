@@ -1,6 +1,6 @@
 # Install and build
 
-**clia** ships one binary: **`claid`**. Build from source with CMake, configure with INI files, run a **main hub** on the agent host and **secondary clients** on remote terminals.
+**clia** ships one binary: **`cliad`**. Build from source with CMake, configure with INI files, run a **main hub** on the agent host and **secondary clients** on remote terminals.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ cd clia
 ./build.sh
 ```
 
-Output: `build/bin/claid`
+Output: `build/bin/cliad`
 
 Platform wrappers (same CMake tree):
 
@@ -39,13 +39,13 @@ Optional install:
 cmake --install build --prefix /usr/local
 ```
 
-Installs `claid`, example INI files, and `share/clia/` menu YAML.
+Installs `cliad`, example INI files, and `share/clia/` menu YAML.
 
 ## Configuration layout
 
 ```bash
 mkdir -p ~/.config/clia
-cp clai-terminal.main.ini.example ~/.config/clia/main.ini
+cp clia-terminal.main.ini.example ~/.config/clia/main.ini
 cp local/examples/secondary.linux.ini.example ~/.config/clia/secondary.ini
 cp examples/rsyncd.conf.example ~/.config/clia/rsyncd.conf
 ```
@@ -66,10 +66,10 @@ First readable file wins:
 
 1. `-c FILE` / `--config FILE`
 2. `$CLIA_INI`
-3. `$CLAI_TERMINAL_INI`
+3. `$CLIA_TERMINAL_INI`
 4. `$VAULT_TERMINAL_INI`
 5. `~/.config/clia/clia.ini`
-6. `./clia.ini`, `./clai-terminal.ini`
+6. `./clia.ini`, `./clia-terminal.ini`
 7. `./local/main.ini`, `./local/desk.ini`, `./local/secondary.ini`, `./local/hub.ini`
 
 ## Environment variables
@@ -80,31 +80,31 @@ First readable file wins:
 | `CLIA_CODE_ROOT` | Code tree root for project discovery |
 | `CLIA_PROJECTS_DIR` | Subdir under code root for `/projects` (default: `projects`) |
 | `CLIA_WORKSPACE_ROOT` | Main workspace override for `/main` |
-| `CLAI_RSYNC_CONFIG` | rsyncd config path |
-| `CLAI_STATE_DIR` | Runtime state (default: `~/.config/clia`) |
-| `CLAI_TERMINAL_SHARE` | Menu YAML search path |
+| `CLIA_RSYNC_CONFIG` | rsyncd config path |
+| `CLIA_STATE_DIR` | Runtime state (default: `~/.config/clia`) |
+| `CLIA_TERMINAL_SHARE` | Menu YAML search path |
 | `OPENROUTER_API_KEY` | OpenRouter plugin |
 | `OPENAI_API_KEY` | OpenAI-compatible plugin |
 
 ## Run main hub
 
 ```bash
-CLIA_MAIN_INI=~/.config/clia/main.ini ./scripts/start-claid-daemon.sh
-./scripts/status-claid-main.sh
-./scripts/stop-claid.sh
+CLIA_MAIN_INI=~/.config/clia/main.ini ./scripts/start-cliad-daemon.sh
+./scripts/status-cliad-main.sh
+./scripts/stop-cliad.sh
 ```
 
 Interactive desk on the same machine:
 
 ```bash
-./scripts/start-claid-desk.sh
+./scripts/start-cliad-desk.sh
 ```
 
 ## Run secondary client
 
 ```bash
-./build/bin/claid -c ~/.config/clia/secondary.ini
-./build/bin/claid -c ~/.config/clia/secondary.ini 192.168.1.100 4224 claid-linux
+./build/bin/cliad -c ~/.config/clia/secondary.ini
+./build/bin/cliad -c ~/.config/clia/secondary.ini 192.168.1.100 4224 cliad-linux
 ```
 
 ## AmigaOS secondary

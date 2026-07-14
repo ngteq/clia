@@ -1,10 +1,10 @@
 # Chat and commands
 
-The secondary **claid** client exposes an interactive slash-command interface. Input is expanded from short aliases, sent to the main hub when needed, and printed with optional async streaming for long AI replies.
+The secondary **cliad** client exposes an interactive slash-command interface. Input is expanded from short aliases, sent to the main hub when needed, and printed with optional async streaming for long AI replies.
 
 ## Session start
 
-After connect, claid prints:
+After connect, cliad prints:
 
 ```
 /ma /main → main workspace (then chat)
@@ -20,7 +20,7 @@ Secondary banner (POSIX) also lists mesh status and F-key hints where supported.
 `/menu`, `/mn`, `/cmd`, or `/cm` prints the registry grouped by area:
 
 ```
-claid commands /help <cmd> for more
+cliad commands /help <cmd> for more
   Projects   /i /index /p /projects /pj /project /ma /main /rc /rsync
   Mesh       /pg /ping /ls /list /st /status /ai /ct /chat (plain text)
   Compose    /mu /multi /sn /send

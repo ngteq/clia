@@ -2,12 +2,12 @@
 
 ## Overview
 
-**clia** is the project (build, INI schema, scripts, documentation). **`claid`** is the runtime binary: mesh hub, secondary client, and built-in plugin host.
+**clia** is the project (build, INI schema, scripts, documentation). **`cliad`** is the runtime binary: mesh hub, secondary client, and built-in plugin host.
 
 ```
 Secondary terminals                Main agent host
 ┌─────────────────┐               ┌──────────────────────────┐
-│ claid secondary │── TCP :4224 ──│ claid hub / main         │
+│ cliad secondary │── TCP :4224 ──│ cliad hub / main         │
 │ slash-command UI│               │ Cursor agent + plugins   │
 └─────────────────┘               │ optional rsync :4334     │
                                   └──────────────────────────┘
@@ -52,7 +52,7 @@ Connect target: `[secondary] host=` and `port=` in INI, or `HOST PORT [client_id
 
 ## Plugin model
 
-Plugins are **compiled in** (`src/clai_plugins.c`) — no dynamic `.so` loading.
+Plugins are **compiled in** (`src/clia_plugins.c`) — no dynamic `.so` loading.
 
 | Plugin | Runs on | Function |
 |--------|---------|----------|
@@ -71,7 +71,7 @@ Provider priority follows INI `prefer=` flags and `/ai` selection on the client.
 | Protocol encode/decode | `src/vault_mesh.c` |
 | Hub (main) | `src/vault_mesh_hub.c` |
 | Client (secondary) | `src/vault_mesh_client.c` |
-| Async chat output | `src/clai_chat_async.c` |
+| Async chat output | `src/clia_chat_async.c` |
 
 Wire format: line-oriented `M42/1 CMD key=value …` over TCP (default port **4224**).
 
@@ -87,7 +87,7 @@ Implementation: `src/vault_cursor_projects.c`.
 
 ## Menu registry
 
-Slash commands and help text load from `share/areas.yaml` and `share/commands.yaml` (embedded fallback on Amiga). Renderer: `src/clai_menu_registry.c`.
+Slash commands and help text load from `share/areas.yaml` and `share/commands.yaml` (embedded fallback on Amiga). Renderer: `src/clia_menu_registry.c`.
 
 ## State files
 
@@ -95,12 +95,12 @@ Default directory: `~/.config/clia/` — pid files, daemon log, rsync config, la
 
 ## Build system
 
-CMake project `clia` v0.3.5. Platform glue: `cmake/ClaiTerminalPlatforms.cmake`.
+CMake project `clia` v0.3.5. Platform glue: `cmake/CliaTerminalPlatforms.cmake`.
 
 | Build | Output |
 |-------|--------|
-| `./build.sh` | `build/bin/claid` |
-| `./scripts/build-amiga.sh` | `amiga/build/claid`, `amiga/build/clai-terminal` |
+| `./build.sh` | `build/bin/cliad` |
+| `./scripts/build-amiga.sh` | `amiga/build/cliad`, `amiga/build/clia-terminal` |
 
 ## Related
 
